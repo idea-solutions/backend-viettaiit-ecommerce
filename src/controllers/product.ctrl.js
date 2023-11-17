@@ -133,16 +133,6 @@ const getProducts = async (req, res) => {
     response.data = dataCacheExist.data;
   } else {
     const { count, rows } = await Product.findAndCountAll({
-      // attributes: {
-      //   include: [
-      //     [
-      //       sequelize.literal(`(
-      //         SELECT SUM(qtyInStock) FROM ProductItem WHERE ProductItem.productId = Product.id
-      //       )`),
-      //       "inventoryCount",
-      //     ],
-      //   ],
-      // },
       where: queryObjectProduct,
       include: [
         {
@@ -280,10 +270,7 @@ const updateProduct = async (req, res) => {
   product.categoryId = categoryId;
   product.description = description;
   product.price = price;
-  // product.slug = createSlug(name);
 
-  // Luw product Items
-  // return res.json(productItems);
   for (const productItem of productItems) {
     const productItemExist = await ProductItem.findOne({
       where: {

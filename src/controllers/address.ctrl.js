@@ -27,8 +27,6 @@ const addAddressMe = async (req, res) => {
 
   if (!phoneNumber || !province || !district || !ward || !fullName)
     throw new BadRequestError("info is required");
-  // const isAddress = await Address.findOne({ where: { userId } });
-  // if (isAddress) throw new BadRequestError("address user is already in use");
 
   req.body.userId = userId;
   await Address.update({ using: false }, { where: { userId } });

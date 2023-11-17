@@ -15,37 +15,6 @@ paypal.configure({
   client_secret: process.env.PAYPAL_CLIENT_SECRET,
 });
 
-// router.get("/success", async (req, res) => {
-//   res.json({ success: "success", req });
-//   // const payerId = req.query.PayerID;
-//   // const paymentId = req.query.paymentId;
-
-//   // const execute_payment_json = {
-//   //   payer_id: payerId,
-//   //   transactions: [
-//   //     {
-//   //       amount: {
-//   //         currency: "USD",
-//   //         total: total.toString(),
-//   //       },
-//   //     },
-//   //   ],
-//   // };
-
-//   // paypal.payment.execute(
-//   //   paymentId,
-//   //   execute_payment_json,
-//   //   function (error, payment) {
-//   //     if (error) {
-//   //       console.log("cancle");
-//   //     } else {
-//   //       console.log(JSON.stringify(payment));
-//   //       console.log("success");
-//   //       // res.render("success");
-//   //     }
-//   //   }
-//   // );
-// });
 router.post("/", async (req, res) => {
   const total = Math.floor(req.body.total / 23000)
     .toFixed(2)
@@ -61,17 +30,6 @@ router.post("/", async (req, res) => {
     },
     transactions: [
       {
-        // item_list: {
-        //   items: [
-        //     {
-        //       name: "item",
-        //       sku: "item",
-        //       price: total,
-        //       currency: "USD",
-        //       quantity: 1,
-        //     },
-        //   ],
-        // },
         amount: {
           currency: "USD",
           total: total,

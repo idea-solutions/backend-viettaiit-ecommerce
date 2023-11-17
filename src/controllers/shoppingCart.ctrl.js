@@ -12,14 +12,6 @@ const addOrUpdateCartItemMe = async (req, res) => {
       userId: userId,
     },
   });
-  // const [shoppingCartItem, created] = await ShoppingCartItem.findOrCreate({
-  //   where: { cartId: shoppingCart.id, productItemId },
-  //   defaults: {
-  //     productItemId,
-  //     cartId: shoppingCart.id,
-  //     qty,
-  //   },
-  // });
   const shoppingCartItem = await ShoppingCartItem.findOne({
     where: { cartId: shoppingCart.id, productItemId },
   });
